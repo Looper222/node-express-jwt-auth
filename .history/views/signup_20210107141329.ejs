@@ -26,7 +26,8 @@
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' }
         });
-    } catch (err) {
+    }
+    catch (err) {
         console.log(err);
     }
 });

@@ -23,11 +23,8 @@ const handleErrors = (err) => {
   }
 }
 
-const maxAge = 1*24*60*60;
 const createToken = (id) => {
-  return jwt.sign({ id }, 'node course with jwt', {
-    expiresIn: maxAge
-  });
+  return jwt.sign({ id }, 'node course with jwt');
 }
 
 const signup_get = (req, res) => {
@@ -43,9 +40,7 @@ const signup_post = async (req, res) => {
 
   try {
     const user = await User.create({ email, password });
-    const token = createToken(user._id);
-    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ user: user._id });
+    res.status(201).json(user);
   }
   catch (err) {
     const errors = handleErrors(err);
