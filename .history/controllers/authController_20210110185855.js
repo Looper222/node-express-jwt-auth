@@ -7,16 +7,6 @@ const handleErrors = (err) => {
   console.log(err.message, err.code);
   let errors = { email: '', password: '' };
 
-  // incorrect email
-  if (err.message === 'incorrect email') {
-    errors.email = 'That email is not registered';
-  }
-
-  // incorrect password
-  if (err.message === 'incorrect password') {
-    errors.password = 'That password is incorrect';
-  }
-
   // duplicate error values
   if (err.code === 11000) {
     errors.email = 'that email is already registered';
@@ -76,7 +66,7 @@ const login_post = async (req, res) => {
   }
   catch (err) {
     const errors = handleErrors(err);
-    res.status(400).json({ errors });
+    res.status(400).json(err);
   }
 }
 
