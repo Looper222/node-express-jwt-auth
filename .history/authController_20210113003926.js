@@ -6,15 +6,21 @@ const handleErrors = (err) => {
   console.log(err.message, err.code);
   let errors = { email: '', password: '' };
 
+  if (err.message) {
+		errors.email = 'Email or password is incorrect';
+		errors.password = 'Please check your data';
+	}
+
+
   // incorrect email
-  if (err.message === 'incorrect email') {
-    errors.email = 'That email is notT registered';
-  }
+  // if (err.message === 'incorrect email') {
+  //   errors.email = 'That email is not registered';
+  // }
 
   // incorrect password
-  if (err.message === 'incorrect password') {
-    errors.password = 'That password is incorrect';
-  }
+  // if (err.message === 'incorrect password') {
+  //   errors.password = 'That password is incorrect';
+  // }
 
   // duplicate email error
   if (err.code === 11000) {
