@@ -28,7 +28,6 @@ const checkUser = (req, res, next) => {
     jwt.verify(token, 'net ninja secret', async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.locals.user = null;
         next();
       } else {
         console.log(decodedToken);
@@ -39,9 +38,8 @@ const checkUser = (req, res, next) => {
     });
   }
   else {
-    res.locals.user = null;
-    next();
+
   }
 }
 
-module.exports = { requireAuth, checkUser };
+module.exports = { requireAuth };

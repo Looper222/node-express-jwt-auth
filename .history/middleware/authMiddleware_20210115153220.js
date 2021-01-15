@@ -39,9 +39,8 @@ const checkUser = (req, res, next) => {
     });
   }
   else {
-    res.locals.user = null;
-    next();
+
   }
 }
 
-module.exports = { requireAuth, checkUser };
+module.exports = { requireAuth };
